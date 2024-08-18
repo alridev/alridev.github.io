@@ -5,7 +5,7 @@
   url: https://t.me/gosumail_bot
   ion_src: ./assets/images/icon-telegram.svg
   index: 1
-  width: 70%
+  
 
 - name: Gosu Proxy
   description: Все виды прокси для любых задач
@@ -14,7 +14,7 @@
   url: https://t.me/gosuproxy_bot
   ion_src: ./assets/images/icon-telegram.svg
   index: 1
-  width: 70%
+  
 
 - name: Gosu Screen
   description: Лучшая отрисовка чеков ЕВРОПЫ + QR
@@ -23,7 +23,7 @@
   url: https://t.me/gosuscreen_bot
   ion_src: ./assets/images/icon-telegram.svg
   index: 1
-  width: 70%
+  
 
 - name: Gosu Market
   description: Качественные аккаунты vinted / facebook
@@ -32,7 +32,7 @@
   url: https://t.me/gosumarket_bot
   ion_src: ./assets/images/icon-telegram.svg
   index: 1
-  width: 70%
+  
 
 - name: Gosu Exchange
   description: TON и TRX  по самому выгодному курсу
@@ -41,7 +41,7 @@
   url: https://t.me/gosuexchange_bot
   ion_src: ./assets/images/icon-telegram.svg
   index: 1
-  width: 70%
+  
 
 - name: $BSP
   description: Best seed parser
