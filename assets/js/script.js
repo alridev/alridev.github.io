@@ -67,7 +67,7 @@ for (let i = 0; i < navigationLinks.length; i++) {
   });
 }
 
-const url = "https://codestats.net/api/users/alri";
+const url = "https://codestats.net/api/users/zcxw"; // alri 
 
 fetch(url)
   .then((res) => res.json())
