@@ -1,0 +1,23 @@
+- name: Gosu
+  description: Market, Proxy, Mailer and other
+  preview: https://i.imgur.com/0jmLO89.jpeg
+  tag: Top
+  url: https://t.me/gosu_info
+  ion_name: link
+  index: 1
+
+- name: $BSP
+  description: Best seed parser
+  preview: https://i.imgur.com/V2MW66J.png
+  tag: Parsers
+  index: 99
+  url: https://github.com/alridev/BestSeedParserSource
+  ion_name: logo-github
+
+- name: XStore
+  description: Store for Umbrel OS
+  preview: https://i.imgur.com/QxMVXYI.png
+  tag: Store
+  index: 2
+  url: https://github.com/alridev/xstore-for-umbrel
+  ion_name: logo-github

@@ -140,50 +140,11 @@ fetch(url)
     console.error("Error:", error);
   });
 
-const repositories = [
-  "https://github.com/alridev/gosu",
-  "https://github.com/alridev/xstore-for-umbrel",
-  "https://github.com/alridev/BestSeedParserSource",
-];
-
-async function fetchPortfolioData(repoUrl) {
-  const repoPath = repoUrl.replace("https://github.com/", "");
-  const url = `https://api.github.com/repos/${repoPath}/contents/portfolio.yaml`;
-
-  const response = await fetch(url, {
-    headers: {
-      Accept: "application/vnd.github.v3.raw", // Получаем чистый текст файла
-    },
-  });
-
-  if (response.status === 404) {
-    console.error(`File portfolio.yaml not found in ${repoUrl}`);
-    return null;
-  }
-
-  if (!response.ok) {
-    throw new Error(`Failed to fetch file: ${response.statusText}`);
-  }
-
-  const yamlContent = await response.text();
-  return jsyaml.load(yamlContent); // Парсим YAML в объект JavaScript
-}
 async function aggregatePortfolioData(repositories) {
-  const allProjects = [];
 
-  for (const repo of repositories) {
-    const data = await fetchPortfolioData(repo);
-    if (data && data.info) {
-      const filteredProjects = data.info.filter((project) => !project.hide);
-      filteredProjects.sort(
-        (a, b) => a.data.options.index - b.data.options.index
-      );
-      filteredProjects.forEach((project) => {
-        project.github = repo;
-      });
-      allProjects.push(...filteredProjects);
-    }
-  }
+  var allProjects = repositories.filter((data) => data).flat();
+  allProjects = allProjects.filter((project) => !project.hide);
+  allProjects.sort((a, b) => a.index - b.index);
 
   return allProjects;
 }
@@ -233,14 +194,10 @@ function addProjects(projects) {
 
     const iconBox = document.createElement("a");
     iconBox.classList.add("project-item-icon-box");
-    iconBox.href = project.url || project.github;
+    iconBox.href = project.url;
 
     const icon = document.createElement("ion-icon");
-    if (!project.url) {
-      icon.setAttribute("name", "logo-github");
-    } else {
-      icon.setAttribute("name", "link");
-    }
+    icon.setAttribute("name", project.ion_name || "link");
     iconBox.appendChild(icon);
 
     const img = document.createElement("img");
@@ -293,7 +250,7 @@ function setupCustomSelectAndFilter() {
   };
 
   for (let i = 0; i < selectItems.length; i++) {
-    selectItems[i].onclick =  function () {
+    selectItems[i].onclick = function () {
       let selectedValue = this.innerText.toLowerCase();
       selectValue.innerText = this.innerText;
       elementToggleFunc(select);
@@ -312,12 +269,16 @@ function setupCustomSelectAndFilter() {
       lastClickedBtn.classList.remove("active");
       this.classList.add("active");
       lastClickedBtn = this;
-    }
+    };
   }
 }
 
 // Основная функция для получения данных и обновления страницы
-async function updatePortfolio(repositories) {
+async function updatePortfolio() {
+  const repositories_response = await fetch("./repositories.yaml");
+  const repositories_content = await repositories_response.text();
+  const repositories = jsyaml.load(repositories_content);
+
   const projects = await aggregatePortfolioData(repositories);
   const tags = [...new Set(projects.map((project) => project.tag))]; // Уникальные теги
 
@@ -326,7 +287,7 @@ async function updatePortfolio(repositories) {
   setupCustomSelectAndFilter();
 }
 
-updatePortfolio(repositories).catch((error) => {
+updatePortfolio().catch((error) => {
   console.error("Error:", error.message);
 });
 
