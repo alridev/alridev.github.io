@@ -141,7 +141,6 @@ fetch(url)
   });
 
 async function aggregatePortfolioData(repositories) {
-
   var allProjects = repositories.filter((data) => data).flat();
   allProjects = allProjects.filter((project) => !project.hide);
   allProjects.sort((a, b) => a.index - b.index);
@@ -197,7 +196,13 @@ function addProjects(projects) {
     iconBox.href = project.url;
 
     const icon = document.createElement("ion-icon");
-    icon.setAttribute("name", project.ion_name || "link");
+    if (project.ion_name) {
+      icon.setAttribute("name", project.ion_name);
+    } else if (project.ion_src) {
+      icon.setAttribute("src", project.ion_src);
+    } else {
+      icon.setAttribute("name", "link");
+    }
     iconBox.appendChild(icon);
 
     const img = document.createElement("img");
@@ -221,6 +226,9 @@ function addProjects(projects) {
     anchor.appendChild(description);
 
     listItem.appendChild(anchor);
+    if (project.width) {
+      listItem.style.width = project.width;
+    }
     projectsContainer.appendChild(listItem);
   });
 }
