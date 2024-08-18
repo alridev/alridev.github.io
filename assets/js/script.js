@@ -285,26 +285,26 @@ function filterFunc(selectedValue) {
 function setupCustomSelectAndFilter() {
   const select = document.querySelector("[data-select]");
   const selectItems = document.querySelectorAll("[data-select-item]");
-  const selectValue = document.querySelector("[data-selecct-value]");
+  const selectValue = document.querySelector("[data-select-value]");
   const filterBtn = document.querySelectorAll("[data-filter-btn]");
 
-  select.addEventListener("click", function () {
-    elementToggleFunc(this);
-  });
+  select.onclick = function () {
+    elementToggleFunc(select);
+  };
 
   for (let i = 0; i < selectItems.length; i++) {
-    selectItems[i].addEventListener("click", function () {
+    selectItems[i].onclick =  function () {
       let selectedValue = this.innerText.toLowerCase();
       selectValue.innerText = this.innerText;
       elementToggleFunc(select);
       filterFunc(selectedValue);
-    });
+    };
   }
 
   let lastClickedBtn = filterBtn[0];
 
   for (let i = 0; i < filterBtn.length; i++) {
-    filterBtn[i].addEventListener("click", function () {
+    filterBtn[i].onclick = function () {
       let selectedValue = this.innerText.toLowerCase();
       selectValue.innerText = this.innerText;
       filterFunc(selectedValue);
@@ -312,7 +312,7 @@ function setupCustomSelectAndFilter() {
       lastClickedBtn.classList.remove("active");
       this.classList.add("active");
       lastClickedBtn = this;
-    });
+    }
   }
 }
 
@@ -346,3 +346,4 @@ function setAvatar(avatar) {
       avatarImg.src = "assets/images/my-avatar.png";
   }
 }
+const nav_items = document.querySelectorAll("[data-nav-link]");
