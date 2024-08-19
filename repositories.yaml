@@ -1,15 +1,18 @@
 - name: Gosu Mailer
   description: Моментальный inbox на любом сервисе
-  preview: https://i.imgur.com/ohCmaJW.gif
+  preview: ./assets/images/previews/mail.webm
+  preview_type: webm
   tag: Gosu Projects
   url: https://t.me/gosumail_bot
   ion_src: ./assets/images/icon-telegram.svg
   index: 1
   
+  
 
 - name: Gosu Proxy
   description: Все виды прокси для любых задач
-  preview: https://i.imgur.com/HTERZaV.gif
+  preview: ./assets/images/previews/proxy.webm
+  preview_type: webm
   tag: Gosu Projects
   url: https://t.me/gosuproxy_bot
   ion_src: ./assets/images/icon-telegram.svg
@@ -18,7 +21,8 @@
 
 - name: Gosu Screen
   description: Лучшая отрисовка чеков ЕВРОПЫ + QR
-  preview: https://i.imgur.com/yCBNL9P.gif
+  preview: ./assets/images/previews/screen.webm
+  preview_type: webm
   tag: Gosu Projects
   url: https://t.me/gosuscreen_bot
   ion_src: ./assets/images/icon-telegram.svg
@@ -27,7 +31,8 @@
 
 - name: Gosu Market
   description: Качественные аккаунты vinted / facebook
-  preview: https://i.imgur.com/fCzE5GH.gif
+  preview: ./assets/images/previews/market.webm
+  preview_type: webm
   tag: Gosu Projects
   url: https://t.me/gosumarket_bot
   ion_src: ./assets/images/icon-telegram.svg
@@ -36,7 +41,8 @@
 
 - name: Gosu Exchange
   description: TON и TRX  по самому выгодному курсу
-  preview: https://i.imgur.com/tmZHX0r.gif
+  preview: ./assets/images/previews/exchange.webm
+  preview_type: webm
   tag: Gosu Projects
   url: https://t.me/gosuexchange_bot
   ion_src: ./assets/images/icon-telegram.svg
@@ -46,6 +52,7 @@
 - name: $BSP
   description: Best seed parser
   preview: https://i.imgur.com/V2MW66J.png
+  preview_type: png
   tag: Parsers
   index: 99
   url: https://github.com/alridev/BestSeedParserSource
@@ -54,6 +61,7 @@
 - name: XStore
   description: Store for Umbrel OS
   preview: https://i.imgur.com/QxMVXYI.png
+  preview_type: png
   tag: Store
   index: 2
   url: https://github.com/alridev/xstore-for-umbrel

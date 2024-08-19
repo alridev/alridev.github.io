@@ -67,7 +67,7 @@ for (let i = 0; i < navigationLinks.length; i++) {
   });
 }
 
-const url = "https://codestats.net/api/users/zcxw"; // alri 
+const url = "https://codestats.net/api/users/zcxw"; // alri
 
 fetch(url)
   .then((res) => res.json())
@@ -204,14 +204,39 @@ function addProjects(projects) {
       icon.setAttribute("name", "link");
     }
     iconBox.appendChild(icon);
+    if (project.preview_type === "png") {
+      const img = document.createElement("img");
 
-    const img = document.createElement("img");
-    img.setAttribute("src", project.preview);
-    img.setAttribute("alt", project.name);
-    img.setAttribute("loading", "lazy");
+      img.setAttribute("alt", project.name);
+      img.setAttribute("loading", "lazy");
+      img.setAttribute("src", project.preview);
+      img.setAttribute("data-src", project.preview);
+      figure.appendChild(img);
+    } else if (project.preview_type === "webm") {
+      const video = document.createElement("video");
+      video.setAttribute("alt", project.name);
+     
+
+      //  autoplay loop muted controls webkit-playsinline playsinline
+      video.setAttribute("muted", "");
+      video.setAttribute("autoplay", "");
+      video.setAttribute("loop", "");
+      video.setAttribute("webkit-playsinline", "");
+      video.setAttribute("webkit-playsinline", "");
+      video.setAttribute("playsinline", "");
+
+      const source = document.createElement("source");
+      source.setAttribute("type", "video/webm");
+      source.setAttribute("src", project.preview);
+      video.appendChild(source);
+
+      figure.appendChild(video);
+      
+      // muted="muted" autoplay="true" loop="true" preload="auto" 
+    }
 
     figure.appendChild(iconBox);
-    figure.appendChild(img);
+    
 
     const title = document.createElement("h3");
     title.classList.add("project-title");
